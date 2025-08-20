@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .cont {
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50vw;
+        height: 50vh;
+        background:linear-gradient(to bottom,blue,aqua);
+    }
+
+    .box {
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: aliceblue;
+        width: 25vw;
+        height: 25vh;
+    }
+
+    .mini {
+        border: 2px solid black;
+        background-color: aqua;
+        width: 10vw;
+        height: 10vh;
+
+    }
+</style>
+
+<body>
+    <div class="cont">
+        <div class="box">
+            <div class="mini"></div>
+        </div>
+    </div>
+</body>
+<script>
+    let cont = document.querySelector(".cont");
+    cont.addEventListener("click", (e) => {
+        alert("click on the cont");
+        e.stopPropagation();
+    });
+
+    let box = document.querySelector(".box");
+    let toggle = true;
+
+    function change() {
+        return `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
+    }
+    box.addEventListener("click", (e) => {
+        alert("hi asshole you click on the box");
+        e.stopPropagation();
+        if (toggle) {
+            box.style.background=`linear-gradient(to left ,${change()},${change()})`
+        }
+        else {
+            box.style.backgroundColor = "";
+        }
+        toggle = !toggle;
+    })
+
+    let mini = document.querySelector(".mini");
+    mini.addEventListener("click", (e) => {
+        alert("hi asshole you click on the mini");
+        e.stopPropagation();
+    })
+    
+    let body=document.body;
+    body.classList.add("color");
+    let color=document.querySelector(".color");
+    color.style.background=`linear-gradient(to bottom,${change()},${change()})`;
+
+    body.addEventListener("click",()=>{
+        body.classList.toggle("color");
+    });
+
+
+
+
+</script>
+
+</html>
